@@ -29,6 +29,19 @@ body {
   background-color: #f5f5f5;
 }
 
+.row-wrapper {
+  width: 100% !important;
+  display: flex;
+  margin: 0 !important;
+
+  label,
+  input,
+  .label {
+    width: 49% !important;
+    margin: auto !important;
+  }
+}
+
 a {
   color: var(--blue-100);
   text-decoration: underline;
@@ -339,9 +352,14 @@ input:focus, select:focus {
   order: 1;
   padding: 1rem;
   margin-bottom: 0.80rem;
+  transition: background-color 0.5s ease;
 }
 
-@media (max-width: 767px) {
+.results-section.toggle {
+  background-color: rgba(12, 130, 44, 0.35);
+}
+
+@media (min-width: 767px) {
   .results-section {
     scroll-margin-top: unset;
     padding: 1rem;
@@ -434,6 +452,9 @@ footer {
 @media (min-width: 768px) {
   .calculator-footer {
     margin: 2rem;
+  }
+  .about-section {
+    display: none;
   }
 }
 

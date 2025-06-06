@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pagespeed Impact Calculator</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <main class="calculator-wrapper">
     <div class="calculator-card">
       <header class="card-header">
         <h1>Pagespeed Impact Calculator</h1>
-        <div class="card-header-top"><p>Calculate the impact of improving the loading speed of your online shop based on various study scenarios or your own expectations. <a href="#instructions">Scroll for instructions.</a></p></div>
+        <div class="card-header-top">
+          <p>Calculate the impact of improving the loading speed of your online shop based on various study scenarios or
+            your own expectations. <a href="#instructions">Scroll for instructions.</a></p>
+        </div>
       </header>
 
       <div class="card-content">
@@ -27,8 +32,9 @@
             <section class="input-section">
               <div class="input-group">
                 <label for="visitors">Monthly Website Visitors<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Enter the number of visitors to the shop for a particular completed month. You can find this information in Google Analytics, Matomo or your web server statistics.</span>
-                </span>
+                    <span class="tooltip">Enter the number of visitors to the shop for a particular completed month. You
+                      can find this information in Google Analytics, Matomo or your web server statistics.</span>
+                  </span>
 
                 </label>
                 <input type="text" id="visitors" name="visitors" />
@@ -37,16 +43,16 @@
               <div class="loading-box">
                 <div class="input-group">
                   <label for="orders">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Please provide the total value of orders for the selected month.</span>
-                </span>
+                      <span class="tooltip">Please provide the total value of orders for the selected month.</span>
+                    </span>
                   </label>
                   <input type="text" id="orders" name="orders" />
                 </div>
 
                 <div class="input-group">
                   <label for="totalOrderValue">Total Order Value<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Please provide the total value of orders for the selected month.</span>
-                </span>
+                      <span class="tooltip">Please provide the total value of orders for the selected month.</span>
+                    </span>
                   </label>
                   <input type="text" id="totalOrderValue" name="totalOrderValue" />
                 </div>
@@ -55,19 +61,23 @@
 
 
               <div class="loading-box">
-                <div class="input-group">
-                  <label for="currentLoadTime">Current loading time (s)<span class="tooltip-trigger" tabindex="0">?
-                    <span class="tooltip">Enter the current loading time of your website in seconds. You can find this information in Google PageSpeed Insights, GTmetrix or WebPageTest.</span>
-                  </span>
-                  </label>
-                  <input type="text" id="currentLoadTime" />
-                </div>
-                <div class="input-group">
-                  <label for="optimizedLoadTime">Estimated loading time (s)<span class="tooltip-trigger" tabindex="0">?
-                    <span class="tooltip">Enter the expected loading time after optimization in seconds.</span>
-                  </span>
-                  </label>
-                  <input type="text" id="optimizedLoadTime" />
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <label for="currentLoadTime">Current loading time (s)<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Enter the current loading time of your website in seconds. You can find
+                          this information in Google PageSpeed Insights, GTmetrix or WebPageTest.</span>
+                      </span>
+                    </label>
+                    <label for="optimizedLoadTime">Estimated loading time (s)<span class="tooltip-trigger"
+                        tabindex="0">?
+                        <span class="tooltip">Enter the expected loading time after optimization in seconds.</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="row-wrapper">
+                    <input type="text" id="currentLoadTime" />
+                    <input type="text" id="optimizedLoadTime" />
+                  </div>
                 </div>
               </div>
               <div class="input-group">
@@ -87,7 +97,7 @@
                 <input type="text" id="customIncrease" />
               </div>
             </section>
-            <section class="results-section">
+            <section class="results-section" id="results-section">
               <h2>Actual Conversions</h2>
 
               <div class="loading-box">
@@ -133,47 +143,53 @@
             <section class="input-section">
               <div class="input-group">
                 <label for="visitorsB">Monthly Website Visitors<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Enter a number (comma or dot allowed)</span>
-                </span>
-              </label>
+                    <span class="tooltip">Enter a number (comma or dot allowed)</span>
+                  </span>
+                </label>
                 <input type="text" id="visitorsB" />
               </div>
 
+
               <div class="loading-box">
-                <div class="input-group">
-                  <label for="ordersB">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Enter a number (comma or dot allowed)</span>
-                </span>
-
-                  </label>
-                  <input type="text" id="ordersB" />
-                </div>
-
-                <div class="input-group">
-                  <label for="orderValueB">Average Order Value<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Enter a number (comma or dot allowed)</span>
-                </span>
-                  </label>
-                  <input type="text" id="orderValueB" />
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <label for="ordersB">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Enter a number (comma or dot allowed)</span>
+                      </span>
+                    </label>
+                    </label>
+                    <label for="orderValueB">Average Order Value<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Enter a number (comma or dot allowed)</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="row-wrapper">
+                    <input type="text" id="ordersB" />
+                    <input type="text" id="orderValueB" />
+                  </div>
                 </div>
               </div>
 
               <div class="loading-box">
-                <div class="input-group">
-                <label for="currentLoadTimeB">Current loading time (s)<span class="tooltip-trigger" tabindex="0">?
-                  <span class="tooltip">Enter a number (comma or dot allowed)</span>
-                </span>
-                </label>
-                <input type="text" id="currentLoadTimeB" />
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <label for="currentLoadTimeB">Current loading time (s)<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Enter a number (comma or dot allowed)</span>
+                      </span>
+                    </label>
+                    <label for="optimizedLoadTimeB">Estimated loading time (s)<span class="tooltip-trigger"
+                        tabindex="0">?
+                        <span class="tooltip">Enter a number (comma or dot allowed)</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="row-wrapper">
+                    <input type="text" id="currentLoadTimeB" />
+                    <input type="text" id="optimizedLoadTimeB" />
+                  </div>
                 </div>
-                <div class="input-group">
-                  <label for="optimizedLoadTimeB">Estimated loading time (s)<span class="tooltip-trigger" tabindex="0">?
-                    <span class="tooltip">Enter a number (comma or dot allowed)</span>
-                  </span>
-                  </label>
-                  <input type="text" id="optimizedLoadTimeB" />
-                </div>
-            </div>
+
+              </div>
               <div class="input-group">
                 <label for="scenarioB">Szenario</label>
                 <select id="scenarioB">
@@ -191,18 +207,19 @@
                 <input type="text" id="customIncreaseB" />
               </div>
             </section>
-            <section class="results-section">
+            <section class="results-section" id="results-sectionB">
               <h2>Actual Conversions</h2>
 
               <div class="loading-box">
-                <div class="input-group">
-                  <span>Conversion Rate (%)</span>
-                  <div id="conversionDisplayB" class="readonly-output">-</div>
-                </div>
-
-                <div class="input-group">
-                  <span>Total Monthly Order Value</span>
-                  <div id="totalOrderValueDisplayB" class="readonly-output">-</div>
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <span class="label">Conversion Rate (%)</span>
+                    <span class="label">Total Monthly Order Value</span>
+                  </div>
+                  <div class="row-wrapper">
+                    <div id="conversionDisplayB" class="readonly-output label">-</div>
+                    <div id="totalOrderValueDisplayB" class="readonly-output label">-</div>
+                  </div>
                 </div>
               </div>
 
@@ -237,25 +254,42 @@
 
           <div class="about-section" id="about">
             <h2>About</h2>
-            <p>Calculate the impact of improving the loading speed of your online shop based on various study scenarios or your own expectations. <a href="#instructions">Scroll for instructions.</a></p>
+            <p>Calculate the impact of improving the loading speed of your online shop based on various study scenarios
+              or your own expectations. <a href="#instructions">Scroll for instructions.</a></p>
           </div>
 
-        <h2>Instructions<a id="instructions"></a></h2>
-        <div class="card-header-left"><p><strong>Variant A:</strong> You have: Monthly visitors, orders and total order value. You want to calculate the conversion rate, the <b>average order value</b>, and the potential revenue.</p></div>
-        <div class="card-header-right"><p><strong>Variant B:</strong> You have: Monthly visitors, orders, and average order value. You want to calculate the conversion rate, the <b>total monthly order value</b>, and the potential revenue.</p></div>
-        <p>Enter numbers with full stops or commas (e.g. 1,000.50 or 1000.50).</p>
-        <p>This calculator does not constitute a binding statement or commitment; it only performs 'what if' calculations based on the information you provide.
-          Actual page speed calculations in relation to possible purchases can only be made retrospectively.</p>
-      </div>
-      <div class="calculator-footer-sources" id="sources">
-        <h2>Sources</h2>
-        <ul>
-          <li>* Google Study: Retail Sites <a href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/" target="_blank"> 0,1 sec second improvement of mobile site speed increases conversion rates by: 8,4 %</a></li>
-          <li>* Google Study: Travel Sites <a href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/" target="_blank"> 0,1 sec second improvement of mobile site speed increases conversion rates by: 10,1 %</a></li>
-          <li>* Walmart Study: <a href="https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/">+2 % conversion rate per -1s loading time</a></li>
-          <li>* Please use this calcualtor without any warranty. <a href="https://www.web-vision.de/impressum.html">Legal notice</a></li>
-        </ul>
-      </div>
+          <h2>Instructions<a id="instructions"></a></h2>
+          <div class="card-header-left">
+            <p><strong>Variant A:</strong> You have: Monthly visitors, orders and total order value. You want to
+              calculate the conversion rate, the <b>average order value</b>, and the potential revenue.</p>
+          </div>
+          <div class="card-header-right">
+            <p><strong>Variant B:</strong> You have: Monthly visitors, orders, and average order value. You want to
+              calculate the conversion rate, the <b>total monthly order value</b>, and the potential revenue.</p>
+          </div>
+          <p>Enter numbers with full stops or commas (e.g. 1,000.50 or 1000.50).</p>
+          <p>This calculator does not constitute a binding statement or commitment; it only performs 'what if'
+            calculations based on the information you provide.
+            Actual page speed calculations in relation to possible purchases can only be made retrospectively.</p>
+        </div>
+        <div class="calculator-footer-sources" id="sources">
+          <h2>Sources</h2>
+          <ul>
+            <li>* Google Study: Retail Sites <a
+                href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/"
+                target="_blank"> 0,1 sec second improvement of mobile site speed increases conversion rates by: 8,4
+                %</a></li>
+            <li>* Google Study: Travel Sites <a
+                href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/"
+                target="_blank"> 0,1 sec second improvement of mobile site speed increases conversion rates by: 10,1
+                %</a></li>
+            <li>* Walmart Study: <a
+                href="https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/">+2 %
+                conversion rate per -1s loading time</a></li>
+            <li>* Please use this calcualtor without any warranty. <a
+                href="https://www.web-vision.de/impressum.html">Legal notice</a></li>
+          </ul>
+        </div>
       </footer>
     </div>
   </main>
@@ -273,4 +307,5 @@
     });
   </script>
 </body>
+
 </html>
