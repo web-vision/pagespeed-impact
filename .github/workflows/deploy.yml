@@ -1,0 +1,30 @@
+name: Deploy Project
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy files to server
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          mkdir -p ~/backup
+          cp -r ~/testroot/* ~/backup/ 2>/dev/null || true
+          rm -rf ~/testroot/*
+          git clone https://github.com/${{ github.repository }}.git ~/pagespeed-impact
+          cp ~/pagespeed-impact/public/* ~/testroot/
+          chown -R ${{ secrets.USERNAME }} ~/testroot/
+          chmod -R 644 ~/testroot/*
+          rm -rf ~/pagespeed-impact
