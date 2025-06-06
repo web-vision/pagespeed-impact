@@ -21,10 +21,10 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           mkdir -p ~/backup
-          cp -r ~/testroot/* ~/backup/ 2>/dev/null || true
-          rm -rf ~/testroot/*
+          cp -r ~/httpdocs/* ~/backup/ 2>/dev/null || true
+          rm -rf ~/httpdocs/*
           git clone https://github.com/${{ github.repository }}.git ~/pagespeed-impact
-          cp ~/pagespeed-impact/public/* ~/testroot/
-          chown -R ${{ secrets.USERNAME }} ~/testroot/
-          chmod -R 644 ~/testroot/*
+          cp ~/pagespeed-impact/public/* ~/httpdocs/
+          chown -R ${{ secrets.USERNAME }} ~/httpdocs/
+          chmod -R 644 ~/httpdocs/*
           rm -rf ~/pagespeed-impact
