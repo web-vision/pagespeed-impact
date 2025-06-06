@@ -60,7 +60,7 @@ function calculateImpact(variant) {
     increaseFactor = (diff / 0.1) * 0.104;
   } else if (scenario === 'walmart') {
     const diff = currentLoad - optimizedLoad;
-    increaseFactor = (diff / 1.0) * 0.02; // Apply to conversion rate
+    increaseFactor = diff * 0.02; // Apply to conversion rate
   }
 
   const currentConversionRate = visitors > 0 ? orders / visitors : 0;
@@ -96,3 +96,25 @@ document.getElementById('scenarioB').addEventListener('change', function () {
 ['ordersB', 'visitorsB', 'orderValueB'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => handleOrdersInput('B'));
 });
+
+
+
+
+
+if (window.matchMedia('(max-width: 991px)').matches) {
+  document.addEventListener('DOMContentLoaded', function () {
+    const calculateButton = document.getElementById('calculateButton');
+
+    if (calculateButton) {
+      calculateButton.addEventListener('click', function () {
+
+        const resultSection = document.querySelector('.card-header');
+        if (resultSection) {
+          resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  });
+}
+
+

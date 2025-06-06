@@ -5,46 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pagespeed Impact Calculator</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .tab-header {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .tab-header button {
-      padding: 0.5rem 1rem;
-      font-weight: bold;
-      border: 2px solid #003e02;
-      background-color: white;
-      cursor: pointer;
-    }
-    .tab-header button.active {
-      background-color: #003e02;
-      color: white;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .readonly-output {
-      background-color: #f0f0f0;
-      border: 2px solid #ccc;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-    }
-    .flex-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .flex-row .input-group {
-      flex: 1;
-      min-width: 200px;
-    }
-  </style>
 </head>
 <body>
   <main class="calculator-wrapper">
@@ -58,6 +18,8 @@
         <div class="tab-header">
           <button class="tab-button active" data-tab="tabA">Variant A</button>
           <button class="tab-button" data-tab="tabB">Variant B</button>
+          <a title="about" href="/#about">About</a>
+          <a title="sources" href="/#sources">Sources</a>
         </div>
 
         <div id="tabA" class="tab-content active">
@@ -71,20 +33,27 @@
                 </label>
                 <input type="text" id="visitors" name="visitors" />
               </div>
-              <div class="input-group">
-                <label for="orders">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
+
+              <div class="loading-box">
+                <div class="input-group">
+                  <label for="orders">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
                   <span class="tooltip">Please provide the total value of orders for the selected month.</span>
                 </span>
-                </label>
-                <input type="text" id="orders" name="orders" />
-              </div>
-              <div class="input-group">
-                <label for="totalOrderValue">Total Order Value<span class="tooltip-trigger" tabindex="0">?
+                  </label>
+                  <input type="text" id="orders" name="orders" />
+                </div>
+
+                <div class="input-group">
+                  <label for="totalOrderValue">Total Order Value<span class="tooltip-trigger" tabindex="0">?
                   <span class="tooltip">Please provide the total value of orders for the selected month.</span>
                 </span>
-                </label>
-                <input type="text" id="totalOrderValue" name="totalOrderValue" />
+                  </label>
+                  <input type="text" id="totalOrderValue" name="totalOrderValue" />
+                </div>
+
               </div>
+
+
               <div class="loading-box">
                 <div class="input-group">
                   <label for="currentLoadTime">Current loading time (s)<span class="tooltip-trigger" tabindex="0">?
@@ -120,14 +89,20 @@
             </section>
             <section class="results-section">
               <h2>Actual Conversions</h2>
-              <div class="input-group">
-                <span>Conversion Rate (%)</span>
-                <div id="conversionDisplay" class="readonly-output">-</div>
+
+              <div class="loading-box">
+                <div class="input-group">
+                  <span>Conversion Rate (%)</span>
+                  <div id="conversionDisplay" class="readonly-output">-</div>
+                </div>
+
+                <div class="input-group">
+                  <span>Average Order Value</span>
+                  <div id="orderValueDisplay" class="readonly-output">-</div>
+                </div>
               </div>
-              <div class="input-group">
-                <span>Average Order Value</span>
-                <div id="orderValueDisplay" class="readonly-output">-</div>
-              </div>
+
+
               <h2>Potential Revenue</h2>
               <div class="results-card">
                 <h3>Revenue Uplift</h3>
@@ -163,21 +138,26 @@
               </label>
                 <input type="text" id="visitorsB" />
               </div>
-              <div class="input-group">
-                <label for="ordersB">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
+
+              <div class="loading-box">
+                <div class="input-group">
+                  <label for="ordersB">Monthly Orders<span class="tooltip-trigger" tabindex="0">?
                   <span class="tooltip">Enter a number (comma or dot allowed)</span>
                 </span>
 
-                </label>
-                <input type="text" id="ordersB" />
-              </div>
-              <div class="input-group">
-                <label for="orderValueB">Average Order Value<span class="tooltip-trigger" tabindex="0">?
+                  </label>
+                  <input type="text" id="ordersB" />
+                </div>
+
+                <div class="input-group">
+                  <label for="orderValueB">Average Order Value<span class="tooltip-trigger" tabindex="0">?
                   <span class="tooltip">Enter a number (comma or dot allowed)</span>
                 </span>
-                </label>
-                <input type="text" id="orderValueB" />
+                  </label>
+                  <input type="text" id="orderValueB" />
+                </div>
               </div>
+
               <div class="loading-box">
                 <div class="input-group">
                 <label for="currentLoadTimeB">Current loading time (s)<span class="tooltip-trigger" tabindex="0">?
@@ -213,21 +193,26 @@
             </section>
             <section class="results-section">
               <h2>Actual Conversions</h2>
-              <div class="input-group">
-                <span>Conversion Rate (%)</span>
-                <div id="conversionDisplayB" class="readonly-output">-</div>
+
+              <div class="loading-box">
+                <div class="input-group">
+                  <span>Conversion Rate (%)</span>
+                  <div id="conversionDisplayB" class="readonly-output">-</div>
+                </div>
+
+                <div class="input-group">
+                  <span>Total Monthly Order Value</span>
+                  <div id="totalOrderValueDisplayB" class="readonly-output">-</div>
+                </div>
               </div>
-              <div class="input-group">
-                <span>Total Monthly Order Value</span>
-                <div id="totalOrderValueDisplayB" class="readonly-output">-</div>
-              </div>
+
               <h2>Potential Revenue</h2>
               <div class="results-card">
                 <h3>Revenue Uplift</h3>
                 <dl>
                   <div class="result-row">
                     <dt>Increased Conversion Rate:</dt>
-                    <dd id="upliftConversion">–</dd>
+                    <dd id="upliftConversionB">–</dd>
                   </div>
                   <div class="result-row">
                     <dt>Monthly Revenue:</dt>
@@ -248,7 +233,13 @@
       </div>
 
       <footer class="calculator-footer">
-        <div style="display:block">       
+        <div style="display:block">
+
+          <div class="about-section" id="about">
+            <h2>About</h2>
+            <p>Calculate the impact of improving the loading speed of your online shop based on various study scenarios or your own expectations. <a href="#instructions">Scroll for instructions.</a></p>
+          </div>
+
         <h2>Instructions<a id="instructions"></a></h2>
         <div class="card-header-left"><p><strong>Variant A:</strong> You have: Monthly visitors, orders and total order value. You want to calculate the conversion rate, the <b>average order value</b>, and the potential revenue.</p></div>
         <div class="card-header-right"><p><strong>Variant B:</strong> You have: Monthly visitors, orders, and average order value. You want to calculate the conversion rate, the <b>total monthly order value</b>, and the potential revenue.</p></div>
@@ -256,7 +247,7 @@
         <p>This calculator does not constitute a binding statement or commitment; it only performs 'what if' calculations based on the information you provide.
           Actual page speed calculations in relation to possible purchases can only be made retrospectively.</p>
       </div>
-      <div class="calculator-footer-sources">
+      <div class="calculator-footer-sources" id="sources">
         <h2>Sources</h2>
         <ul>
           <li>* Google Study: Retail Sites <a href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/" target="_blank"> 0,1 sec second improvement of mobile site speed increases conversion rates by: 8,4 %</a></li>
