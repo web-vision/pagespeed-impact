@@ -78,6 +78,19 @@ function calculateImpact(variant) {
   if (monthlyOutput) monthlyOutput.textContent = `€${formatNumber(deltaRevenue)}`;
   if (yearlyOutput) yearlyOutput.textContent = `€${formatNumber(deltaRevenue * 12)}`;
   if (upliftPercentOutput) upliftPercentOutput.textContent = `${formatNumber(increaseFactor * 100)} %`;
+
+  const resultsSection = document.getElementById(`results-section${suffix}`);
+
+  if (window.matchMedia('(max-width: 991px)').matches) {
+    if (resultsSection) {
+      resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  resultsSection.classList.toggle('toggle');
+  setTimeout(() => {
+    resultsSection.classList.toggle('toggle');
+  }, "1000");
 }
 
 document.getElementById('calculateButton').addEventListener('click', () => calculateImpact(''));
@@ -96,25 +109,3 @@ document.getElementById('scenarioB').addEventListener('change', function () {
 ['ordersB', 'visitorsB', 'orderValueB'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => handleOrdersInput('B'));
 });
-
-
-
-
-
-if (window.matchMedia('(max-width: 991px)').matches) {
-  document.addEventListener('DOMContentLoaded', function () {
-    const calculateButton = document.getElementById('calculateButton');
-
-    if (calculateButton) {
-      calculateButton.addEventListener('click', function () {
-
-        const resultSection = document.querySelector('.card-header');
-        if (resultSection) {
-          resultSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    }
-  });
-}
-
-
