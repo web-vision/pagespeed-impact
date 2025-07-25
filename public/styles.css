@@ -462,7 +462,7 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-.calculator-footer-sources {
+.calculator-footer-sources, .calculator-footer-faq {
   margin: 2rem 0 0 0;
   font-size: 0.875rem;
   color: black;
@@ -540,3 +540,4 @@ footer {
   flex: 1;
   min-width: 200px;
 }
+.faq-question {font-weight:bold}
