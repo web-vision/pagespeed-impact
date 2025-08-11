@@ -574,3 +574,18 @@ footer {
   min-width: 200px;
 }
 .faq-question {font-weight:bold}
+
+@media screen and (max-width: 575px) {
+  .tab-header,
+  .input-section,
+  .card-header-wrapper {
+    gap: 0.5rem;
+  }
+  .results-card,
+  .results-section {
+    padding: 0.5rem;
+  }
+  .results-section {
+    margin-bottom: 0;
+  }
+}
