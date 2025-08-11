@@ -24,8 +24,9 @@ jobs:
           cp -r ~/httpdocs/* ~/backup/ 2>/dev/null || true
           rm -rf ~/httpdocs/*
           git clone https://github.com/${{ github.repository }}.git ~/pagespeed-impact
-          cp ~/pagespeed-impact/public/* ~/httpdocs/
+          cp -r ~/pagespeed-impact/public/* ~/httpdocs/
           ln -s ~/shared/matomo.js ~/httpdocs/matomo.js
           chown -R ${{ secrets.USERNAME }} ~/httpdocs/
           chmod -R 644 ~/httpdocs/*
+          find ~/httpdocs/* -type d -exec chmod 755 {} +
           rm -rf ~/pagespeed-impact
