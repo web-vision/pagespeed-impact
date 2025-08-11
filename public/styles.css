@@ -453,9 +453,6 @@ footer {
   .calculator-footer {
     margin: 2rem;
   }
-  .about-section {
-    display: none;
-  }
 }
 
 .calculator-footer .about-section {
@@ -492,7 +489,43 @@ footer {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-header-wrapper {
   margin-bottom: 0.70rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+.language-menu {
+  a {
+    text-decoration: none;
+    color: var(--blue-600);
+    padding: 0.15rem;
+    border-radius: 0.25rem;
+  }
+  
+  a.active {
+    padding: 0.2rem 0.5rem;
+    background-color: var(--blue-600);
+    color: white;
+  }
+}
+
+@media (min-width: 475px) {
+  .card-header-wrapper {
+    display: block;
+  }
+  .language-menu {
+    position: absolute;
+    right: 1rem;
+    top: 0.35rem;
+  }
 }
 
 .tab-header a {

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagespeed Impact Rechner</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="../matomo.js"></script>
+</head>
+
+<body>
+  <main class="calculator-wrapper">
+    <div class="calculator-card">
+      <header class="card-header">
+        <h1>Pagespeed Impact Rechner</h1>
+        <div class="card-header-top">
+          <p>Berechnen Sie die Auswirkungen einer Verbesserung der Ladegeschwindigkeit Ihres Online-Shops basierend auf verschiedenen Studienergebnissen oder Ihren eigenen Erwartungen. <a href="/de#instructions">Für Anweisungen scrollen.</a></p>
+        </div>
+      </header>
+
+      <div class="card-content">
+        <div class="card-header-wrapper">
+          <div class="language-menu">
+            <a href="/">EN</a>
+            <span> | </span>
+            <a href="/de" class="active">DE</a>
+          </div>
+          <div class="tab-header">
+            <button class="tab-button active" data-tab="tabA">Variante A</button>
+            <button class="tab-button" data-tab="tabB">Variante B</button>
+            <a title="Über uns" href="/de#about">Über uns</a>
+            <a title="Quellen" href="/de#sources">Quellen</a>
+          </div>
+        </div>
+
+        <div id="tabA" class="tab-content active">
+          <form id="calculatorFormA" class="calculator-grid">
+            <section class="input-section">
+              <div class="input-group">
+                <label for="visitors">Monatliche Website-Besucher<span class="tooltip-trigger" tabindex="0">?
+                    <span class="tooltip">Geben Sie die Anzahl der Besucher des Shops für einen bestimmten abgeschlossenen Monat ein. Sie
+                      finden diese Informationen in Google Analytics, Matomo oder Ihrer Webserver-Statistik.</span>
+                  </span>
+
+                </label>
+                <input type="text" id="visitors" name="visitors" />
+              </div>
+
+              <div class="loading-box">
+                <div class="input-group">
+                  <label for="orders">Monatliche Bestellungen<span class="tooltip-trigger" tabindex="0">?
+                      <span class="tooltip">Bitte geben Sie die Gesamtzahl der Bestellungen für den ausgewählten Monat an.</span>
+                    </span>
+                  </label>
+                  <input type="text" id="orders" name="orders" />
+                </div>
+
+                <div class="input-group">
+                  <label for="totalOrderValue">Gesamter Bestellwert<span class="tooltip-trigger" tabindex="0">?
+                      <span class="tooltip">Bitte geben Sie den Gesamtwert der Bestellungen für den ausgewählten Monat an.</span>
+                    </span>
+                  </label>
+                  <input type="text" id="totalOrderValue" name="totalOrderValue" />
+                </div>
+
+              </div>
+
+
+              <div class="loading-box">
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <label for="currentLoadTime">Aktuelle Ladezeit (s)<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Geben Sie die aktuelle Ladezeit Ihrer Website in Sekunden ein. Sie können
+                          diese Informationen in Google PageSpeed Insights, GTmetrix oder WebPageTest finden.</span>
+                      </span>
+                    </label>
+                    <label for="optimizedLoadTime">Geschätzte Ladezeit (s)<span class="tooltip-trigger"
+                        tabindex="0">?
+                        <span class="tooltip">Geben Sie die erwartete Ladezeit nach der Optimierung in Sekunden ein.</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="row-wrapper">
+                    <input type="text" id="currentLoadTime" />
+                    <input type="text" id="optimizedLoadTime" />
+                  </div>
+                </div>
+              </div>
+              <div class="input-group">
+                <label for="scenario">Szenario</label>
+                <select id="scenario">
+                  <option value="googleStudy">Google Studie: Einzelhandel (+8,4 % pro -0,1 s)</option>
+                  <option value="googleTravel">Google Studie: Reise (+10,4 % pro -0,1 s)</option>
+                  <option value="walmart">Walmart: +2 % Conversion-Rate bei -1s Ladezeit</option>
+                  <option value="standard">Standard (15%)</option>
+                  <option value="optimistic">Optimistisch (25%)</option>
+                  <option value="conservative">Konservativ (5%)</option>
+                  <option value="custom">Benutzerdefinierte Steigerung</option>
+                </select>
+              </div>
+              <div class="input-group" id="customScenarioGroup" style="display: none;">
+                <label for="customIncrease">Erwartete Steigerung in %</label>
+                <input type="text" id="customIncrease" />
+              </div>
+            </section>
+            <section class="results-section" id="results-section">
+              <h2>Aktuelle Conversions</h2>
+
+              <div class="loading-box">
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <span class="label">Conversion-Rate (%)</span>
+                    <span class="label">Gesamter monatlicher Bestellwert</span>
+                  </div>
+                  <div class="row-wrapper">
+                    <div id="conversionDisplay" class="readonly-output label">-</div>
+                    <div id="totalOrderValueDisplay" class="readonly-output label">-</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <h2>Potentieller Umsatz</h2>
+              <div class="results-card">
+                <h3>Umsatzsteigerung</h3>
+                <dl>
+                  <div class="result-row">
+                    <dt>Erhöhte Conversion-Rate:</dt>
+                    <dd id="upliftConversion">–</dd>
+                  </div>
+                  <div class="result-row">
+                    <dt>Monatlicher Umsatz:</dt>
+                    <dd id="monthlyRevenue">€0</dd>
+                  </div>
+                  <div class="result-row">
+                    <dt>Jährlicher Umsatz:</dt>
+                    <dd id="yearlyRevenue">€0</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+            <div class="button-container">
+              <button type="button" id="calculateButton" class="calculate-button">Impact berechnen</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="tabB" class="tab-content">
+          <form id="calculatorFormB" class="calculator-grid">
+            <section class="input-section">
+              <div class="input-group">
+                <label for="visitorsB">Monatliche Website-Besucher<span class="tooltip-trigger" tabindex="0">?
+                    <span class="tooltip">Geben Sie eine Zahl ein (Komma oder Punkt erlaubt)</span>
+                  </span>
+                </label>
+                <input type="text" id="visitorsB" />
+              </div>
+
+
+              <div class="loading-box">
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <label for="ordersB">Monatliche Bestellungen<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Geben Sie eine Zahl ein (Komma oder Punkt erlaubt)</span>
+                      </span>
+                    </label>
+                    </label>
+                    <label for="orderValueB">Durchschnittlicher Bestellwert<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Geben Sie eine Zahl ein (Komma oder Punkt erlaubt)</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="row-wrapper">
+                    <input type="text" id="ordersB" />
+                    <input type="text" id="orderValueB" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="loading-box">
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <label for="currentLoadTimeB">Aktuelle Ladezeit (s)<span class="tooltip-trigger" tabindex="0">?
+                        <span class="tooltip">Geben Sie eine Zahl ein (Komma oder Punkt erlaubt)</span>
+                      </span>
+                    </label>
+                    <label for="optimizedLoadTimeB">Geschätzte Ladezeit (s)<span class="tooltip-trigger"
+                        tabindex="0">?
+                        <span class="tooltip">Geben Sie eine Zahl ein (Komma oder Punkt erlaubt)</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="row-wrapper">
+                    <input type="text" id="currentLoadTimeB" />
+                    <input type="text" id="optimizedLoadTimeB" />
+                  </div>
+                </div>
+
+              </div>
+              <div class="input-group">
+                <label for="scenarioB">Szenario</label>
+                <select id="scenarioB">
+                  <option value="googleStudy">Google Studie: Einzelhandel (+8,4 % Conversion-Rate pro -0,1 s)</option>
+                  <option value="googleTravel">Google Studie: Reise (+10,4 % Conversion-Rate pro -0,1 s)</option>
+                  <option value="walmart">Walmart: +2 % Conversion-Rate bei -1s Ladezeit</option>
+                  <option value="standard">Standard (15%)</option>
+                  <option value="optimistic">Optimistisch (25%)</option>
+                  <option value="conservative">Konservativ (5%)</option>
+                  <option value="custom">Benutzerdefiniert</option>
+                </select>
+              </div>
+              <div class="input-group" id="customScenarioGroupB" style="display: none;">
+                <label for="customIncreaseB">Erwartete Steigerung in %</label>
+                <input type="text" id="customIncreaseB" />
+              </div>
+            </section>
+            <section class="results-section" id="results-sectionB">
+              <h2>Aktuelle Conversions</h2>
+
+              <div class="loading-box">
+                <div class="input-group" style="width: 100%;">
+                  <div class="row-wrapper">
+                    <span class="label">Conversion-Rate (%)</span>
+                    <span class="label">Gesamter monatlicher Bestellwert</span>
+                  </div>
+                  <div class="row-wrapper">
+                    <div id="conversionDisplayB" class="readonly-output label">-</div>
+                    <div id="totalOrderValueDisplayB" class="readonly-output label">-</div>
+                  </div>
+                </div>
+              </div>
+
+              <h2>Potentieller Umsatz</h2>
+              <div class="results-card">
+                <h3>Umsatzsteigerung</h3>
+                <dl>
+                  <div class="result-row">
+                    <dt>Erhöhte Conversion-Rate:</dt>
+                    <dd id="upliftConversionB">–</dd>
+                  </div>
+                  <div class="result-row">
+                    <dt>Monatlicher Umsatz:</dt>
+                    <dd id="monthlyRevenueB">€0</dd>
+                  </div>
+                  <div class="result-row">
+                    <dt>Jährlicher Umsatz:</dt>
+                    <dd id="yearlyRevenueB">€0</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+            <div class="button-container">
+              <button type="button" id="calculateButtonB" class="calculate-button">Impact berechnen</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <footer class="calculator-footer">
+        <div style="display:block">
+
+          <div class="about-section" id="about">
+            <h2>Über uns</h2>
+            <p>Berechnen Sie die Auswirkungen einer Verbesserung der Ladegeschwindigkeit Ihres Online-Shops basierend auf verschiedenen Studienergebnissen oder Ihren eigenen Erwartungen. <a href="/de#instructions">Für Anweisungen scrollen.</a></p>
+          </div>
+
+          <h2>Anweisungen<a id="instructions"></a></h2>
+          <div class="card-header-left">
+            <p><strong>Variante A:</strong> Sie haben: Monatliche Besucher, Bestellungen und gesamten Bestellwert. Sie möchten
+              die Conversion-Rate, den <b>durchschnittlichen Bestellwert</b> und den potentiellen Umsatz berechnen.</p>
+          </div>
+          <div class="card-header-right">
+            <p><strong>Variante B:</strong> Sie haben: Monatliche Besucher, Bestellungen und durchschnittlichen Bestellwert. Sie möchten
+              die Conversion-Rate, den <b>gesamten monatlichen Bestellwert</b> und den potentiellen Umsatz berechnen.</p>
+          </div>
+          <p>Geben Sie Zahlen mit Punkten oder Kommas ein (z.B. 1.000,50 oder 1000.50).</p>
+          <p>Dieser Rechner stellt keine verbindliche Aussage oder Verpflichtung dar; er führt nur 'Was-wäre-wenn'-
+            Berechnungen basierend auf den von Ihnen bereitgestellten Informationen durch.
+            Tatsächliche Pagespeed-Berechnungen in Bezug auf mögliche Käufe können nur rückwirkend erfolgen.</p>
+        </div>
+	<div class="calculator-footer-faq" id="faq">
+	<h2>Häufig gestellte Fragen</h2>
+		<p class="faq-question">Wie erkenne ich den Pagespeed, den Google für meine Website misst?</p>
+	 	<p class="faq-answer">Besuchen Sie <a href="https://pagespeed.web.dev/">https://pagespeed.web.dev/</a> und geben Sie die Domain oder URL Ihrer Website oder Ihres Online-Shops ein. Warten Sie ein paar Sekunden, damit Google Ihre Website messen kann. Sobald Google fertig ist, finden Sie den <b>Speed Index</b> für Ihre Website in Sekunden. Stellen Sie außerdem sicher, dass Sie Ihre Website für Mobilgeräte messen.</p>
+		<p class="faq-question">Wie kann ich über einen Zeitraum hinweg sehen, wie Google die Leistung meiner Website misst?</p>
+		<p class="faq-answer">Google misst die Leistung Ihrer Website über die Zeit, basierend auf realen Chrome-Nutzererfahrungen. Sie können diese Daten auf der Website <a href="https://cruxvis.withgoogle.com">https://cruxvis.withgoogle.com/</a> finden. Diese Seite zeigt Ihnen auch eine Tendenz, wie sich Ihre Website über die Zeit entwickelt.</p>
+	</div>
+        <div class="calculator-footer-sources" id="sources">
+          <h2>Quellen</h2>
+          <ul>
+            <li>* Google Studie: Einzelhandels-Websites <br><a
+                href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/"
+                target="_blank"> 0,1 Sekunde Verbesserung der mobilen Webseitengeschwindigkeit erhöht die Conversion-Rate um: 8,4
+                %</a></li>
+            <li>* Google Studie: Reise-Websites <br><a
+                href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/app-and-mobile/mobile-page-speed-data/"
+                target="_blank"> 0,1 Sekunde Verbesserung der mobilen Webseitengeschwindigkeit erhöht die Conversion-Rate um: 10,1
+                %</a></li>
+            <li>* Walmart Study: <a
+                href="https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/">+2 %
+                conversion rate per -1s loading time</a></li>
+            <li>* Bitte verwenden Sie diesen Rechner ohne jegliche Gewährleistung. <a
+                href="https://www.web-vision.de/impressum.html">Impressum</a> &copy; <a href="https://www.web-vision.de/">web-vision GmbH</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <script src="calculator.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const tabs = document.querySelectorAll('.tab-content');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+
+</html>
